@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.group3.online_shop.R
+import com.group3.online_shop.data.component.Loading
 import com.group3.online_shop.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
@@ -16,6 +17,7 @@ class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
     private val viewModel: LoginViewModel by viewModels()
+    private val dialog = Loading()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,9 +44,10 @@ class LoginFragment : Fragment() {
     }
 
     private fun clickLoginButton(){
+        dialog.show(childFragmentManager, "loading_dialog")
         viewModel.login(
-            email = "virakcambodia44@gmail.com",
-            password = "@password@",
+            email = binding.emailTextInput.text.toString(),
+            password = binding.passwordTextInput.text.toString(),
         )
     }
 
