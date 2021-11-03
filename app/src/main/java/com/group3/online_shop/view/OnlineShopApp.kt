@@ -5,7 +5,6 @@ import android.app.Application
 import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate
 
-
 class OnlineShopApp : Application() {
 
     companion object {
