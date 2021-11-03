@@ -10,6 +10,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.group3.online_shop.R
 import com.group3.online_shop.data.component.Loading
+import com.group3.online_shop.data.component.ValidationDialog
 import com.group3.online_shop.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
@@ -31,16 +32,35 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val navController = findNavController()
         initViewAction(navController)
+        initObserve(navController)
     }
 
     private fun initViewAction(navController: NavController){
         binding.loginButton.setOnClickListener {
             clickLoginButton()
-            navController.navigate(R.id.action_loginFragment_to_homeFragment)
         }
        binding.signUpTextView.setOnClickListener {
            navController.navigate(R.id.action_loginFragment_to_signUpFragment)
        }
+    }
+
+    private fun initObserve(navController: NavController){
+        viewModel.login.observe(viewLifecycleOwner, { login ->
+            if (login != null) {
+                navController.navigate(R.id.action_loginFragment_to_homeFragment)
+            }
+        })
+
+        viewModel.errorMessage.observe(viewLifecycleOwner, { message ->
+            if (message != null) {
+                if(dialog.isVisible) {
+                    dialog.dismiss()
+                    val validationDialog = ValidationDialog(message = message)
+                    validationDialog.show(childFragmentManager, "error_dialog")
+                }
+            }
+        })
+
     }
 
     private fun clickLoginButton(){

@@ -11,7 +11,8 @@ import kotlinx.coroutines.launch
 
 class LoginViewModel : ViewModel() {
 
-    private val login: MutableLiveData<Login> = MutableLiveData()
+    val login: MutableLiveData<Login> = MutableLiveData()
+    var errorMessage: MutableLiveData<String> = MutableLiveData()
 
     fun login(email: String, password: String) {
 
@@ -22,7 +23,7 @@ class LoginViewModel : ViewModel() {
                     login.postValue(result.data)
                 }
                 is ResultOf.Error -> {
-                  println(result.exception)
+                    errorMessage.postValue(result.exception)
                 }
             }
         }
