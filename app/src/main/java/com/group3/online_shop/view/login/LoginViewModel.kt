@@ -19,12 +19,10 @@ class LoginViewModel : ViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             when (val result = OnlineShopApp.mainRepository.login( param = param)) {
                 is ResultOf.Success -> {
-                    result.data
-                    println("data ${result.data}")
-//                    login.postValue(result.data)
+                    login.postValue(result.data)
                 }
                 is ResultOf.Error -> {
-
+                  println(result.exception)
                 }
             }
         }

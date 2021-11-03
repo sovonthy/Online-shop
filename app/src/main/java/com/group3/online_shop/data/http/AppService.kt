@@ -2,14 +2,14 @@ package com.example.epoxy.data.http
 
 import com.group3.online_shop.model.Login
 import retrofit2.Response
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface AppService {
 
-    @POST("auth/login")
-    suspend fun login(): Response<ArrayList<Login>>
+    @POST("/auth/login")
+    suspend fun login(
+        @Body params: HashMap<String, String>
+    ): Response<Login>
 
     @GET("/todos/{id}")
     suspend fun getTodo(

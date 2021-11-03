@@ -12,9 +12,9 @@ class MainRepository(
 ) {
     suspend fun login(
         param: HashMap<String, String>
-    ): ResultOf<ArrayList<Login>> {
+    ): ResultOf<Login> {
         return safeApiCall {
-            appService!!.login()
+            appService!!.login(params = param)
         }
     }
 
