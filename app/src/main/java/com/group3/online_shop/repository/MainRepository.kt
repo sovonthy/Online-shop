@@ -2,7 +2,7 @@ package com.group3.online_shop.repository
 
 import android.content.Context
 import com.example.epoxy.data.http.AppService
-import com.group3.online_shop.model.User
+import com.group3.online_shop.model.Login
 import com.group3.online_shop.utils.ResultOf
 import retrofit2.Response
 
@@ -10,7 +10,9 @@ class MainRepository(
     private val context: Context? = null,
     private val appService: AppService? = null
 ) {
-    suspend fun login(): ResultOf<ArrayList<User>> {
+    suspend fun login(
+        param: HashMap<String, String>
+    ): ResultOf<ArrayList<Login>> {
         return safeApiCall {
             appService!!.login()
         }

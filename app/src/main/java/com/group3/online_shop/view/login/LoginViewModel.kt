@@ -4,27 +4,31 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.group3.online_shop.OnlineShopApp
-import com.group3.online_shop.model.User
+import com.group3.online_shop.model.Login
 import com.group3.online_shop.utils.ResultOf
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class LoginViewModel : ViewModel() {
 
-    private val user: MutableLiveData<User> = MutableLiveData()
+    private val login: MutableLiveData<Login> = MutableLiveData()
 
-    fun getTodos() {
+    fun login(email: String, password: String) {
+
+        val param = hashMapOf("email" to email, "password" to password)
         viewModelScope.launch(Dispatchers.IO) {
-            when (val response = OnlineShopApp.mainRepository.login()) {
+            when (val result = OnlineShopApp.mainRepository.login( param = param)) {
                 is ResultOf.Success -> {
-//                    user.postValue(response.data)
+                    result.data
+                    println("data ${result.data}")
+//                    login.postValue(result.data)
                 }
-
                 is ResultOf.Error -> {
-                    println("Error .... ${response.exception}")
+
                 }
             }
         }
+
     }
 
 
