@@ -5,15 +5,42 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import com.group3.online_shop.R
+import com.group3.online_shop.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
+
+    private var _binding: FragmentLoginBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_login, container, false)
+    ): View {
+        _binding = FragmentLoginBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val navController = findNavController()
+        initViewAction(navController)
+    }
+
+    private fun initViewAction(navController: NavController){
+        binding.loginButton.setOnClickListener {
+            navController.navigate(R.id.action_loginFragment_to_homeFragment)
+        }
+       binding.signUpTextView.setOnClickListener {
+           navController.navigate(R.id.action_loginFragment_to_signUpFragment)
+       }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }
