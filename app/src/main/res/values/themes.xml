@@ -16,7 +16,7 @@
         <item name="android:windowIsFloating">true</item>
         <item name="windowMinWidthMajor">0dp</item>
         <item name="windowMinWidthMinor">0dp</item>
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">#3e8211</item>
         <item name="android:windowFullscreen">false</item>
         <item name="android:windowCloseOnTouchOutside">false</item>
     </style>

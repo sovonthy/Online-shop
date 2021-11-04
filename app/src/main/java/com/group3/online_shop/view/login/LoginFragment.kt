@@ -55,7 +55,7 @@ class LoginFragment : Fragment() {
             if (message != null) {
                 if(dialog.isVisible) {
                     dialog.dismiss()
-                    val validationDialog = ValidationDialog(message = message)
+                    val validationDialog = ValidationDialog("The email address or password is not correct.")
                     validationDialog.show(childFragmentManager, "error_dialog")
                 }
             }
