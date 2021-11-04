@@ -23,6 +23,7 @@ class LoginViewModel : ViewModel() {
                     login.postValue(result.data)
                 }
                 is ResultOf.Error -> {
+                    println("errrrrororr ${result}")
                     errorMessage.postValue(result.exception)
                 }
             }

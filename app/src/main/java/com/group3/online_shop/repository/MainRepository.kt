@@ -2,6 +2,7 @@ package com.group3.online_shop.repository
 
 import android.content.Context
 import com.example.epoxy.data.http.AppService
+import com.google.gson.Gson
 import com.group3.online_shop.model.Login
 import com.group3.online_shop.utils.ResultOf
 import retrofit2.Response
@@ -31,7 +32,9 @@ class MainRepository(
             if (response.isSuccessful) {
                 ResultOf.Success(response.body()!!)
             } else {
-                ResultOf.Error(response.errorBody()?.toString() ?: "Something went wrong")
+
+                println("body = " +  Gson().toJson(response.code()))
+                ResultOf.Error(response.code().toString() ?: "Something went wrong")
             }
 
         } catch (e: Exception) {

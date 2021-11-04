@@ -1,5 +1,6 @@
 package com.group3.online_shop.view.login
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.google.gson.Gson
 import com.group3.online_shop.R
 import com.group3.online_shop.data.component.Loading
 import com.group3.online_shop.data.component.ValidationDialog
@@ -35,16 +37,16 @@ class LoginFragment : Fragment() {
         initObserve(navController)
     }
 
-    private fun initViewAction(navController: NavController){
+    private fun initViewAction(navController: NavController) {
         binding.loginButton.setOnClickListener {
             clickLoginButton()
         }
-       binding.signUpTextView.setOnClickListener {
-           navController.navigate(R.id.action_loginFragment_to_signUpFragment)
-       }
+        binding.signUpTextView.setOnClickListener {
+            navController.navigate(R.id.action_loginFragment_to_signUpFragment)
+        }
     }
 
-    private fun initObserve(navController: NavController){
+    private fun initObserve(navController: NavController) {
         viewModel.login.observe(viewLifecycleOwner, { login ->
             if (login != null) {
                 navController.navigate(R.id.action_loginFragment_to_homeFragment)
@@ -53,17 +55,44 @@ class LoginFragment : Fragment() {
 
         viewModel.errorMessage.observe(viewLifecycleOwner, { message ->
             if (message != null) {
-                if(dialog.isVisible) {
+                if (dialog.isVisible) {
                     dialog.dismiss()
-                    val validationDialog = ValidationDialog("The email address or password is not correct.")
-                    validationDialog.show(childFragmentManager, "error_dialog")
+                    if (message == "400") {
+                        val dialog = AlertDialog.Builder(context).apply {
+                            setTitle("Information")
+                            setMessage("The email address or password is not correct.")
+                            setCancelable(false)
+                            setPositiveButton("OK") { dialog, id ->
+                                dialog.dismiss()
+                            }
+                        }.create()
+                        try {
+                            dialog.show()
+                        } catch (e: Exception) {
+                            e.printStackTrace()
+                        }
+                    } else {
+                        val dialog = AlertDialog.Builder(context).apply {
+                            setTitle("Information")
+                            setMessage(message)
+                            setCancelable(false)
+                            setPositiveButton("OK") { dialog, id ->
+                                dialog.dismiss()
+                            }
+                        }.create()
+                        try {
+                            dialog.show()
+                        } catch (e: Exception) {
+                            e.printStackTrace()
+                        }
+                    }
+
                 }
             }
         })
-
     }
 
-    private fun clickLoginButton(){
+    private fun clickLoginButton() {
         dialog.show(childFragmentManager, "loading_dialog")
         viewModel.login(
             email = binding.emailTextInput.text.toString(),
