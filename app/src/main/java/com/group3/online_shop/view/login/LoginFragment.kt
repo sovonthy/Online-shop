@@ -39,7 +39,8 @@ class LoginFragment : Fragment() {
 
     private fun initViewAction(navController: NavController) {
         binding.loginButton.setOnClickListener {
-            clickLoginButton()
+            navController.navigate(R.id.action_loginFragment_to_homeFragment)
+//            clickLoginButton()
         }
         binding.signUpTextView.setOnClickListener {
             navController.navigate(R.id.action_loginFragment_to_signUpFragment)
@@ -49,7 +50,7 @@ class LoginFragment : Fragment() {
     private fun initObserve(navController: NavController) {
         viewModel.login.observe(viewLifecycleOwner, { login ->
             if (login != null) {
-                navController.navigate(R.id.action_loginFragment_to_homeFragment)
+                navController.navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
             }
         })
 

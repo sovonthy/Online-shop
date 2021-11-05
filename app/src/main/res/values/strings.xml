@@ -9,4 +9,5 @@
     <string name="already_have_an_account_sign_in">Already have an account ? Sign in</string>
     <string name="create_your_free_account">Create Your free Account</string>
     <string name="username">Username:</string>
+    <string name="profile_information">User Information</string>
 </resources>

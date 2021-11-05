@@ -20,14 +20,14 @@
             android:layout_marginTop="100dp"
             android:padding="8dp">
 
-
             <TextView
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"
+                android:layout_gravity="center"
                 android:layout_marginHorizontal="18dp"
                 android:layout_marginBottom="12dp"
                 android:text="@string/login"
+                android:gravity="center"
                 android:textColor="@color/MainColord"
                 android:textSize="38sp" />
 
@@ -86,6 +86,7 @@
                 android:id="@+id/signUpTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 android:text="@string/don_t_have_an_account_sign_up"
                 android:textColor="@color/MainColord"
                 android:textAlignment="center" />
