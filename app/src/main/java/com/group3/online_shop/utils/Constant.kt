@@ -12,4 +12,8 @@ class Constant {
     object Card {
         const val IS_CLICKED = ""
     }
+
+    object Login {
+        const val ACCESS_TOKEN = ""
+    }
 }

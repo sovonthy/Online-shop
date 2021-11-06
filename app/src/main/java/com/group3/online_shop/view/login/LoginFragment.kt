@@ -11,6 +11,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.google.gson.Gson
 import com.group3.online_shop.R
+import com.group3.online_shop.data.SharedPreferenceHelper
 import com.group3.online_shop.data.component.Loading
 import com.group3.online_shop.data.component.ValidationDialog
 import com.group3.online_shop.databinding.FragmentLoginBinding
@@ -21,6 +22,7 @@ class LoginFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel: LoginViewModel by viewModels()
     private val dialog = Loading()
+    private val sharedPreferences by lazy { SharedPreferenceHelper.getInstance(requireContext()) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,8 +41,8 @@ class LoginFragment : Fragment() {
 
     private fun initViewAction(navController: NavController) {
         binding.loginButton.setOnClickListener {
-            navController.navigate(R.id.action_loginFragment_to_homeFragment)
-//            clickLoginButton()
+//            navController.navigate(R.id.action_loginFragment_to_homeFragment)
+            clickLoginButton()
         }
         binding.signUpTextView.setOnClickListener {
             navController.navigate(R.id.action_loginFragment_to_signUpFragment)
@@ -50,6 +52,7 @@ class LoginFragment : Fragment() {
     private fun initObserve(navController: NavController) {
         viewModel.login.observe(viewLifecycleOwner, { login ->
             if (login != null) {
+                sharedPreferences.setAccessToken(login.token.accessToken)
                 navController.navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
             }
         })

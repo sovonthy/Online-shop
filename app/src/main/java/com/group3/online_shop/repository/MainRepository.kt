@@ -4,8 +4,10 @@ import android.content.Context
 import com.example.epoxy.data.http.AppService
 import com.google.gson.Gson
 import com.group3.online_shop.model.Login
+import com.group3.online_shop.model.Profile
 import com.group3.online_shop.utils.ResultOf
 import retrofit2.Response
+import retrofit2.http.Header
 
 class MainRepository(
     private val context: Context? = null,
@@ -19,11 +21,15 @@ class MainRepository(
         }
     }
 
-//    suspend fun getTodoById(id: Int): ResultOf<Todo> {
-//            return safeApiCall {
-//                appService!!.getTodo(id = id)
-//            }
-//    }
+    suspend fun getProfile(
+        authorize: String
+    ): ResultOf<Profile> {
+        return  safeApiCall {
+            appService!!.getProfile(authorize = authorize)
+        }
+    }
+
+
 
 
     private suspend fun <T : Any> safeApiCall(call: suspend () -> Response<T>): ResultOf<T> {

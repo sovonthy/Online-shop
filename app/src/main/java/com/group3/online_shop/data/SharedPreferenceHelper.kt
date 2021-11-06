@@ -2,6 +2,7 @@ package com.group3.online_shop.data
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.group3.online_shop.utils.Constant.Login.ACCESS_TOKEN
 
 class SharedPreferenceHelper {
 
@@ -20,11 +21,11 @@ class SharedPreferenceHelper {
         }
     }
 
-//    fun setAccessToken(value: String) {
-//        val editor = prefs!!.edit()
-//        editor.putString(ACCESS_TOKEN, value)
-//        editor.apply()
-//    }
-//
-//    fun getAccessToken() = prefs!!.getString(ACCESS_TOKEN, "") ?: ""
+    fun setAccessToken(value: String) {
+        val editor = prefs!!.edit()
+        editor.putString(ACCESS_TOKEN, value)
+        editor.apply()
+    }
+
+    fun getAccessToken() = prefs!!.getString(ACCESS_TOKEN, "") ?: ""
 }
