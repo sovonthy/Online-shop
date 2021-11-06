@@ -6,9 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.plusAssign
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.navigation.NavigationView
 import com.group3.online_shop.R
 import com.group3.online_shop.databinding.FragmentHomeBinding
 import com.group3.online_shop.navigation.KeepStateNavigator
@@ -30,6 +33,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         val navHostFragment =
             childFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
         val navigator = KeepStateNavigator(
@@ -43,6 +47,11 @@ class HomeFragment : Fragment() {
 
         binding.bottomNavigationView.setupWithNavController(navController)
 
+        binding.navView.setupWithNavController(navController)
+
+
     }
+
+
 
 }
