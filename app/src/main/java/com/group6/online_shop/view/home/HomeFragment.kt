@@ -66,7 +66,6 @@ class HomeFragment : Fragment() {
                     logOutDialog()
                     true
                 }
-
                 else -> {
                     false
                 }
@@ -94,10 +93,11 @@ class HomeFragment : Fragment() {
         } catch (e: Exception) {
             e.printStackTrace()
         }
+
     }
 
     private fun clearAccessToken() {
-        sharedPreferences.setAccessToken("")
+        sharedPreferences.setAccessToken("test")
         findNavController().navigate(R.id.action_homeFragment_to_loginFragment)
     }
 

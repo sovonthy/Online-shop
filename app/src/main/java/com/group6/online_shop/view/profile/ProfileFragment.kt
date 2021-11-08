@@ -30,18 +30,19 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val nestedNavHostFragment = requireActivity().supportFragmentManager.findFragmentById(R.id.fragment_container) as NavHostFragment
+        val nestedNavHostFragment =
+            requireActivity().supportFragmentManager.findFragmentById(R.id.fragment_container) as NavHostFragment
         val navController = nestedNavHostFragment.navController
         initViewAction(navController)
     }
 
-    private fun initViewAction(navController: NavController){
+    private fun initViewAction(navController: NavController) {
         binding.userTitle.setText("User Information")
         binding.editProfile.setOnClickListener {
             navController.navigate(R.id.editProfileFragment)
         }
         binding.backButton.setOnClickListener {
-            navController.navigateUp()
+            navController.navigate(R.id.homeFragment)
         }
 
         viewModel.getProfile("Bearer " + sharedPreferences.getAccessToken())
@@ -49,9 +50,9 @@ class ProfileFragment : Fragment() {
         observe()
     }
 
-    private fun observe(){
+    private fun observe() {
         viewModel.profile.observe(viewLifecycleOwner, { profile ->
-           binding.username.text = profile.name
+            binding.username.text = profile.name
             binding.email.text = profile.email
             binding.phone.text = profile.phone
             Glide.with(this).load(profile.image)
