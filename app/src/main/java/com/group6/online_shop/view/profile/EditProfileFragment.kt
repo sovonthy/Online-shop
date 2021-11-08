@@ -25,5 +25,4 @@ class EditProfileFragment : Fragment() {
         _binding = null
     }
 
-
 }

@@ -8,6 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.GravityCompat
+import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.plusAssign
@@ -47,16 +49,19 @@ class HomeFragment : Fragment() {
         navController.setGraph(R.navigation.home_nav_graph)
 
         binding.bottomNavigationView.setupWithNavController(navController)
-
         binding.navView.setupWithNavController(navController)
 
-        logOut()
+        logOut(navController)
+
     }
 
-
-    private fun logOut() {
+    private fun logOut(navController: NavController) {
         binding.navView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
+                R.id.profileFragment -> {
+                    navController.navigate(R.id.profileFragment)
+                    true
+                }
                 R.id.logout -> {
                     logOutDialog()
                     true
@@ -66,6 +71,8 @@ class HomeFragment : Fragment() {
                     false
                 }
             }
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
+            true
         }
     }
 
