@@ -7,7 +7,7 @@
 
     <keep_state_fragment
         android:id="@+id/profileFragment2"
-        android:name="com.group3.online_shop.view.profile.ProfileFragment"
+        android:name="com.group6.online_shop.view.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

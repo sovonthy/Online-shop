@@ -91,7 +91,8 @@
             android:elevation="99dp"
             android:focusable="true"
             android:src="@drawable/ic_camera"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="MissingConstraints" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
@@ -107,7 +108,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="Username:"
+            android:text="@string/username"
             android:textSize="16sp" />
 
         <com.google.android.material.textfield.TextInputEditText
@@ -163,7 +164,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="Phone number:"
+            android:text="@string/phone_number"
             android:textSize="16sp" />
 
         <com.google.android.material.textview.MaterialTextView
