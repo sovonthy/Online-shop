@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.group6.online_shop">
+    package="com.group6.onlineshop">
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.group6.online_shop.OnlineShopApp"
+        android:name="com.group6.onlineshop.OnlineShopApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -13,7 +13,7 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Onlineshop">
         <activity
-            android:name="com.group6.online_shop.MainActivity"
+            android:name="com.group6.onlineshop.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

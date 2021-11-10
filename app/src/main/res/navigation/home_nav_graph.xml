@@ -6,27 +6,27 @@
     app:startDestination="@id/dashboardFragment">
     <keep_state_fragment
         android:id="@+id/profileFragment"
-        android:name="com.group6.online_shop.view.profile.ProfileFragment"
+        android:name="com.group6.onlineshop.view.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <keep_state_fragment
         android:id="@+id/cardFragment"
-        android:name="com.group6.online_shop.view.card.CardFragment"
+        android:name="com.group6.onlineshop.view.card.CardFragment"
         android:label="fragment_card"
         tools:layout="@layout/fragment_card" />
     <keep_state_fragment
         android:id="@+id/wishListFragment"
-        android:name="com.group6.online_shop.view.wishlist.WishListFragment"
+        android:name="com.group6.onlineshop.view.wishlist.WishListFragment"
         android:label="fragment_wish_list"
         tools:layout="@layout/fragment_wish_list" />
     <keep_state_fragment
         android:id="@+id/dashboardFragment"
-        android:name="com.group6.online_shop.view.dashboard.DashboardFragment"
+        android:name="com.group6.onlineshop.view.dashboard.DashboardFragment"
         android:label="fragment_dashboard"
         tools:layout="@layout/fragment_dashboard" />
-    <fragment
+    <keep_state_fragment
         android:id="@+id/editProfileFragment"
-        android:name="com.group6.online_shop.view.profile.EditProfileFragment"
+        android:name="com.group6.onlineshop.view.profile.EditProfileFragment"
         android:label="fragment_edit_profile"
         tools:layout="@layout/fragment_edit_profile" />
 </navigation>

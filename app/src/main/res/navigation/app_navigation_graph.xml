@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.group6.online_shop.view.login.LoginFragment"
+        android:name="com.group6.onlineshop.view.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login">
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.group6.online_shop.view.home.HomeFragment"
+        android:name="com.group6.onlineshop.view.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.group6.online_shop.view.register.SignUpFragment"
+        android:name="com.group6.onlineshop.view.register.SignUpFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" />
 </navigation>
